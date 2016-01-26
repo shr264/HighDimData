@@ -1,0 +1,2301 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+% HW2 high dimensional data
+
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{mathrsfs}
+\usepackage{array}
+\usepackage{rotating}
+\usepackage{rotating}
+%\usepackage{babel}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\macheps}{\epsilon_{\mbox{\scriptsize mach}}}
+\let\oldhat\hat
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\hat}[1]{\oldhat{{#1}}}
+\def\rp{\ensuremath \mathbb{R}^p}
+\def\rpp{\ensuremath \mathbb{R}^{p \times p}}
+\def\s{\ensuremath\Sigma}
+\def\om{\ensuremath\Omega}
+\def\pd{\ensuremath\mathbb{P}^+}
+\def\pg{\ensuremath\mathbb{P}_{{G}}}
+\def\E{\ensuremath\mathbb{E}}
+\def\normdist[#1]#2{\ensuremath \sim \mathcal{N} (#1,#2) }
+\def\ndist1{\ensuremath \sim \mathcal{N}  (\mu, \sigma)}
+\def\ndistvec{\ensuremath \sim \mathcal{N}_p ( {\mu},  {\Sigma})}
+\def\lra{\ensuremath\Leftrightarrow}
+\def\stackrel#1#2{\mathrel{\mathop{#2}\limits^{#1}}}
+\newcommand{\ind}{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+\newtheorem{thm}{}[]
+\newtheorem{lemma}{}[]
+\newtheorem{defn}[thm]{}\newcommand{\sign}{\mathrm{sign}}
+\newcommand{\distas}[1]{\mathbin{\overset{#1}{\kern\z@\sim}}}%
+\newsavebox{\mybox}\newsavebox{\mysim}
+\newcommand{\dist}[1]{%
+  \savebox{\mybox}{\hbox{\kern3pt$\scriptstyle#1$\kern3pt}}%
+  \savebox{\mysim}{\hbox{$\sim$}}%
+  \mathbin{\overset{#1}{\kern\z@\resizebox{\wd\mybox}{\ht\mysim}{$\sim$}}}%
+}
+\end_preamble
+\options leqno
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 2
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+fancy
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lhead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+TA,RB,SR,AS
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+STA7934
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size large
+Homework 3 - Analysis of High Dimensional Data
+\series default
+\size default
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\shape italic
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Tavis Abrahamsen, Ray Bai, Syed Rahman and Andrey Skripnikov
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\shape default
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Paragraph
+
+\end_layout
+
+\begin_layout Standard
+Consider the Gaussian graphical model as presented in class.
+ In a seminal paper Meinshausen and Buhlmann (Annals of Statistics, 2006)
+ showed that one can estimate the model by using node-wise penalized (lasso)
+ regression, followed by post-processing to obtain a symmetric and positive
+ definite estimate of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Using your code from HW 2, estimate a Gaussian graphical model using the
+ lasso node-wise regression method.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Apply your algorithms to a chain network, a nearest neighbor network, and
+ a scale free network of size p = 25 with n = 150 observations.
+ Set the density level of your edge set at 10 (see Section 4 of Guo et al.
+ (Biometrika, 2011)).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Replicate the setting in (2) 10 times and provide an estimate of the false
+ positive and false negative rates, as well as the Frobenius norm of the
+ difference between your estimate and the true 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Paragraph
+
+\end_layout
+
+\begin_layout Standard
+The Meinshausen-Buhlmann method to estimate the partial correlations consists
+ of running the following 
+\begin_inset Formula $lasso$
+\end_inset
+
+ regressions for 
+\begin_inset Formula $i=1,...,p$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{align}
+\min_{\tilde{\beta}_{i}}\frac{1}{2}\norm{X_{i}-\sum_{j\not=i}\beta_{ji}X_{j}}_{2}^{2}+\lambda\norm{\tilde{\beta}_{i}}_{1}\label{eq:mb}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{\beta}_{i}=(\beta_{j})_{j\not=i,1\leq j\leq p}$
+\end_inset
+
+.
+ Our goal in this assignment is to estimate the sparsity patterns and the
+ partial correlation matrices corresponding to chain graphs, nearest neighbor
+ networks and Barabasi graphs with density equal to approximately 
+\begin_inset Formula $10\%$
+\end_inset
+
+.
+ Without some post-processing this method doesn't usually produce positive
+ definite estimates and hence is mainly used as a method of estimating the
+ sparsity pattern as opposed to the concentration matrix itself.
+\end_layout
+
+\begin_layout Standard
+To generate 
+\begin_inset Formula $\om$
+\end_inset
+
+ corresponding to a chain graph we first construct a 
+\begin_inset Formula $25\times25$
+\end_inset
+
+ covariance matrix, 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ where the 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+th element of 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{i,j}$
+\end_inset
+
+, is defined as 
+\begin_inset Formula 
+\begin{align*}
+\sigma_{i,j} & =e^{-\abs{s_{i}-s_{j}}/2}\quad\text{ for }s_{1}<s_{2}<...<s_{p}\\
+\text{ and }s_{j}-s_{j-1} & \sim U(0.5,1)\quad\text{ for }j=2,...,p.
+\end{align*}
+
+\end_inset
+
+Then we set 
+\begin_inset Formula $\Omega=\Sigma^{-1}$
+\end_inset
+
+.
+ Our precision matrix thus constructed is a tridiagonal matrix.
+ In the case of the nearest neighbor network, we generate 25 points randomly
+ on the unit square 
+\begin_inset Formula $(0,1)\times(0,1)$
+\end_inset
+
+.
+ We calculate all 
+\begin_inset Formula $p(p-1)/2$
+\end_inset
+
+ pairwise distances and find 
+\begin_inset Formula $m$
+\end_inset
+
+ nearest neighbors of each point in terms of this distance.
+ The nearest neighbor network is obtained by linking any two points that
+ are 
+\begin_inset Formula $m$
+\end_inset
+
+-nearest neighbors of each other.
+ The integer 
+\begin_inset Formula $m=2$
+\end_inset
+
+ is chosen for our study.
+\end_layout
+
+\begin_layout Standard
+To find the solutions to the 
+\begin_inset Formula $lasso$
+\end_inset
+
+ regressions in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mb"
+
+\end_inset
+
+ we use a proximal gradient algorithm using a constant step size, denoted
+ by 
+\begin_inset Formula $t$
+\end_inset
+
+, of 0.0001.
+ The algorithm is as follows: 
+\begin_inset Formula 
+\begin{align*}
+\beta^{k+1} & =\beta^{k}-t\nabla\frac{1}{2}\norm{X_{i}-\sum_{j\not=i}\beta_{ji}^{k}X_{j}}_{2}^{2}\\
+\beta^{k+1} & =S_{t\lambda}(\beta^{k+1})
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $S_{\lambda}(.)$
+\end_inset
+
+ denotes the soft-thresholding operator.
+ The next step was to estimate the optimal 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ for each graph type.
+ Let 
+\begin_inset Formula 
+\begin{align*}
+F(\hat{\om}) & =\frac{\norm{\om-\hat{\om}}_{F}^{2}}{\norm{\om}_{F}^{2}}\\
+FP(\hat{\om}) & =\frac{\sum_{i,j}I(\omega_{ij}=0,\hat{\omega}_{ij}\not=0)}{\sum_{i,j}I(\omega_{ij}=0)}\\
+FN(\hat{\om}) & =\frac{\sum_{i,j}I(\omega_{ij}\not=0,\hat{\omega}_{ij}=0)}{\sum_{i,j}I(\omega_{ij}\not=0)}\\
+\end{align*}
+
+\end_inset
+
+We did this by comparing 
+\begin_inset Formula $F,FP$
+\end_inset
+
+ and 
+\begin_inset Formula $FN$
+\end_inset
+
+ at various 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ between 0 and 114.
+ In general, 
+\begin_inset Formula $F$
+\end_inset
+
+ and 
+\begin_inset Formula $FP$
+\end_inset
+
+ decreased as 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ increased while the 
+\begin_inset Formula $FN$
+\end_inset
+
+ increased with 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ and therefore there usually wasn't any ideal 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ all these measures pointed to.
+ In the case of the chain graph 
+\begin_inset Formula $\lambda=55$
+\end_inset
+
+ worked well because both the 
+\begin_inset Formula $FN$
+\end_inset
+
+ and 
+\begin_inset Formula $FP$
+\end_inset
+
+ were equal to 0 as Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:chain"
+
+\end_inset
+
+ illustrates.
+ Also, at this value of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, we were able to recover the correct sparsity pattern as shown in Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:chaingraphs"
+
+\end_inset
+
+.
+ For the other two graphs we chose 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ to minimize 
+\begin_inset Formula $FN$
+\end_inset
+
+ given that the 
+\begin_inset Formula $FP$
+\end_inset
+
+ was below 
+\begin_inset Formula $0.1$
+\end_inset
+
+.
+ For the nearest neighbor network, this happens at around 
+\begin_inset Formula $\lambda=25$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finally let 
+\begin_inset Formula 
+\begin{align*}
+F_{K}(\hat{\om}) & =\frac{1}{K}\sum_{k=1}^{K}\frac{\norm{\om^{k}-\hat{\om^{k}}}_{F}^{2}}{\norm{\om^{k}}_{F}^{2}}\\
+FP_{K}(\hat{\om}) & =\frac{1}{K}\sum_{k=1}^{K}\frac{\sum_{i,j}I(\omega_{ij}^{k}=0,\hat{\omega}_{ij}^{k}\not=0)}{\sum_{i,j}I(\omega_{ij}^{k}=0)}\\
+FN_{K}(\hat{\om}) & =\frac{1}{K}\sum_{k=1}^{K}\frac{\sum_{i,j}I(\omega_{ij}^{k}\not=0,\hat{\omega}_{ij}^{k}=0)}{\sum_{i,j}I(\omega_{ij}^{k}\not=0)}\\
+\end{align*}
+
+\end_inset
+
+We set 
+\begin_inset Formula $K=10$
+\end_inset
+
+ and replicate the numerical simulations tens times and calculate 
+\begin_inset Formula $F_{K},FP_{K}$
+\end_inset
+
+ and 
+\begin_inset Formula $FN_{K}$
+\end_inset
+
+ for our estimate.
+ A disadvantage of this method is that all the 
+\begin_inset Formula $lasso$
+\end_inset
+
+ regressions are independent with a consequence being the loss of positive
+ definiteness of 
+\begin_inset Formula $\hat{\om}$
+\end_inset
+
+.
+ To calculate a positive definite estimate for 
+\begin_inset Formula $\om$
+\end_inset
+
+, denoted by 
+\begin_inset Formula $\hat{\om}^{pd}$
+\end_inset
+
+, we can follow steps 1 and 2 as outlined below.
+ 
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $i\not=j$
+\end_inset
+
+, set 
+\begin_inset Formula $\om_{ij}=\max\{\om_{ij},\om_{ji}\}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+While 
+\begin_inset Formula $\Lambda_{min}(\om)<0$
+\end_inset
+
+, then 
+\begin_inset Formula $\om=\om-\Lambda_{min}(\om)*I$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $F_{K}^{pd}=F_{K}(\hat{\om}^{pd})$
+\end_inset
+
+ where 
+\begin_inset Formula $\hat{\om}^{pd}$
+\end_inset
+
+ is positive definite.
+ As Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:compare"
+
+\end_inset
+
+ shows most of the results were consistent with our initial calculations.
+ For the chain graph, the prediction of the sparsity pattern tends to be
+ very accurate, but the Frobenius Norm Loss can be higher than for other
+ graph types.
+ In the case of the Nearest Neighbor Network, the Frobenius Norm loss is
+ smaller, but the False Negative rate is much higher indicating that this
+ method doesn't work as well in predicting the sparsity pattern for these
+ type of graphs.
+ 
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features rotate="0" booktabs="true" tabularvalignment="middle">
+<column alignment="right" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Chain
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nearest Neighbor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Barabasi
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $F_{10}^{pd}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.7137008
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.3130917
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+xxx
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $F_{10}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.6640735
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.3137885
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+xxx
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $FP_{10}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0001897533
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.07741935
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+xxx
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $FN_{10}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.6784593
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+xxx
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+A comparison of the Meinshausen-Buhlmann method for Chain, Nearest Neighbor
+ and Barabasi graphs
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:compare"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+[b]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+0.4
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename {chainfp.pdf}
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+False Positive rate vs 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:fpchain"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+[b]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+0.4
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename {chainfn.pdf}
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+False Negative rate vs 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:fnchain"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+[b]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+0.5
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename {chainFrobenius.pdf}
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Frobenius Norm vs 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Frobeniuschain"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Plots for Proximal Gradient Algorithm for Chain Graph.
+ 
+\begin_inset Formula $\lambda\approx55$
+\end_inset
+
+ seems to be optimal.
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:chain"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+[b]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+0.5
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename chaingraphicalmodelestimate.pdf
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Estimated Chain Graph
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:chaingaphsestimate"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+[b]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+0.5
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename chaingraphicalmodelactual.pdf
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+True Chain Graph
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:chaingaphsactual"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+As we can see from the graphs, the sparstiy in the case of the chain graphs
+ was predicted exactly
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:chaingraphs"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+[b]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+0.4
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename {nearestfp.pdf}
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+False Positive rate vs 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:fpnear"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+[b]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+0.4
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename {nearestfn.pdf}
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+False Negative rate vs 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:fnnear"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+[b]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+0.5
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename {nearestFrobenius.pdf}
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Frobenius Norm vs 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Frobeniusnear"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Plots for Proximal Gradient Algorithm for Nearest Neighbor Graph.
+ 
+\begin_inset Formula $\lambda\approx25$
+\end_inset
+
+ seems to be optimal.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:near"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+[b]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+0.50
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename nearestestimategraph.pdf
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Estimated Nearest Neighbor Graph
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:nearestgaphsestimate"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+[b]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+0.50
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename nearestactualgraph.pdf
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+True Nearest Neighbor Graph
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:nearestgaphsactual"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The graph shows the sparsity patterns in the estimated and actual graphs
+ in the case of the nearest neighbor network.
+ In this case, we were unable to recover the exact sparsity pattern.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:nearestgraphs"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+[b]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+0.4
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename {barafp.pdf}
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+False Positive rate vs 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:fpbara"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+[b]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+0.4
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename {barafn.pdf}
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+False Negative rate vs 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:fnbara"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+[b]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+0.5
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename {baraFrobenius.pdf}
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Frobenius Norm vs 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Frobeniusbara"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Plots for Proximal Gradient Algorithm for Barabasi Graph.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:bara"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

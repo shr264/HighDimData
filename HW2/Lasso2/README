@@ -1,0 +1,6 @@
+L1 constrained estimation functions for S-plus
+
+l1ce(...)               Solve a regression problem under L1 constraints
+                        on parameters
+gl1ce(...)              Solve a generalised linear model rgression
+                        problem under L1 constraints on parameters

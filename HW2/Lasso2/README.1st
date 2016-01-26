@@ -1,0 +1,71 @@
+This library contains routines and documentation for solving
+regression problems while imposing an L1 constraint on the estimates.
+The code is based on the algorithm of Osborne et al. (1998) and is
+distributed in the hope that they may also be useful to others.
+However, this software is provided "as is" without any expressed or
+implied warranty.  Specifically:
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Library General Public
+    License as published by the Free Software Foundation; either
+    version 2 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Library General Public License for more details.
+    
+    You should have received a copy of the GNU Library General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+    02111-1307 USA
+
+The complete distribution consists of the following files:
+
+Makefile             a makefile which should facilitate the
+                     installation of this library.
+COPYING.LIB          GNU Library General Public License (mentioned above).
+README               short description of the routines of the library
+                     (necessary to make `library(help=Lasso2)' work
+                     in S-PLUS once the library is installed).
+README.1st           you are just reading it ;-).
+README.INSTALL       some information on how to install the library.
+README.pd            README file which should go into the parent
+                     directory of the Lasso2 directory in which the
+                     library resides in the end (necessary so that
+                     `library()' will give the desired information in
+                     S-PLUS).
+ChangeLog            history of the development of this library.
+Doc                  a subdirectory with the manual and various
+                     supporting but unpublished manuscripts.
+and the underlying C-engine:
+    lasso.c  lasso.h
+the help files:
+    Iowa.d Prostate.d [.l1celist.d [[.l1celist.d aux.d aux.l1celist.d
+    coef.l1ce.d coef.l1celist.d deviance.gl1ce.d deviance.l1ce.d
+    deviance.l1celist.d fitted.l1ce.d fitted.l1celist.d gcv.d
+    gcv.l1ce.d gcv.l1celist.d gl1ce.d gl1ce.object.d is.formula.d
+    l1ce.d l1ce.object.d l1celist.object.d labels.l1ce.d
+    labels.l1celist.d merge.formula.d plot.l1celist.d predict.gl1ce.d
+    predict.l1ce.d print.gl1ce.d print.l1ce.d print.l1celist.d
+    print.summary.gl1ce.d print.summary.l1ce.d residuals.gl1ce.d
+    residuals.l1ce.d residuals.l1celist.d summary.gl1ce.d
+    summary.l1ce.d tr.d vcov.d vcov.l1ce.d vcov.l1celist.d
+the S-Plus interface functions:
+    First.lib.q Iowa.q Prostate.q coef.q deviance.q fitted.q
+    force_ld.q formula.util.q gcv.q gl1ce.q l1ce.q labels.q misc.q
+    plot.q predict.q print.q residuals.q summary.q vcov.q
+
+If you have any troubles or if you find any bugs in this library,
+please let us know and we will try to fix them.  We would also be
+interested to hear from you if you find this library useful and for
+what kind of problems you are using it.
+
+Best wishes,
+        
+        Justin & Berwin & Bill
+
+Department of Statistics  
+The University of Adelaide
+Adelaide SA 5005          
+Australia              

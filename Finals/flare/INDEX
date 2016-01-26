@@ -1,0 +1,34 @@
+coef.slim               Extract Model Coefficients for an object with
+                        S3 class '"slim"'
+eyedata                 The Bardet-Biedl syndrome Gene expression data
+                        from Scheetz et al. (2006)
+flare-package           flare: a new Family of Lasso Regression
+plot.roc                Plot Function for "roc"
+plot.select             Plot Function for "select"
+plot.sim                Plot Function for "sim"
+plot.slim               Plot Function for "slim"
+plot.sugm               Plot Function for "sugm"
+predict.slim            Prediction for an object with S3 class '"slim"'
+print.roc               Print Function for for an object with S3 class
+                        '"roc"'
+print.select            Print Function for for an object with S3 class
+                        '"select"'
+print.sim               Print Function for for an object with S3 class
+                        '"sim"'
+print.slim              Print Function for an object with S3 class
+                        '"slim"'
+print.sugm              Print Function for an object with S3 class
+                        '"sugm"'
+slim                    Sparse Linear Regression using Nonsmooth Loss
+                        Functions and L1 Regularization
+sugm                    High-deimensional Sparse Undirected Graphical
+                        Models.
+sugm.generator          Data generator for sparse undirected graph
+                        estimation.
+sugm.likelihood         Internal flare functions
+sugm.plot               Graph visualization for an object with S3 class
+                        '"sugm"'
+sugm.roc                Draw ROC Curve for an object with S3 class
+                        '"sugm"'
+sugm.select             Model selection for high-dimensional undirected
+                        graphical models

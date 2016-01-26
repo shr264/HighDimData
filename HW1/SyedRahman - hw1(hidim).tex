@@ -1,0 +1,111 @@
+% Covariance Estimation notes
+
+\documentclass[12pt, leqno]{article}
+\usepackage{amsfonts, amsmath, amssymb}
+\usepackage{mathtools}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{graphicx}
+%\usepackage{float}
+%\usepackage{babel}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\macheps}{\epsilon_{\mbox{\scriptsize mach}}}
+\let\oldhat\hat
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\hat}[1]{\oldhat{\mathbf{#1}}}
+\def\rp{\ensuremath \mathbb{R}^p}
+\def\rpp{\ensuremath \mathbb{R}^{p \times p}}
+\def\s{\ensuremath\Sigma}
+\def\om{\ensuremath\Omega}
+\def\pd{\ensuremath\mathbb{P}^+}
+\def\pg{\ensuremath\mathbb{P}_{{G}}}
+\def\E{\ensuremath\mathbb{E}}
+\def\normdist[#1]#2{\ensuremath \sim \mathcal{N} (#1,#2) }
+\def\ndist1{\ensuremath \sim \mathcal{N}  (\mu, \sigma)}
+\def\ndistvec{\ensuremath \sim \mathcal{N}_p (\vec{\mu}, \vec{\Sigma})}
+\def\lra{\ensuremath\Leftrightarrow}
+\newcommand\ind{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+\makeatletter
+\newcommand{\distas}[1]{\mathbin{\overset{#1}{\kern\z@\sim}}}%
+\newsavebox{\mybox}\newsavebox{\mysim}
+\newcommand{\dist}[1]{%
+  \savebox{\mybox}{\hbox{\kern3pt$\scriptstyle#1$\kern3pt}}%
+  \savebox{\mysim}{\hbox{$\sim$}}%
+  \mathbin{\overset{#1}{\kern\z@\resizebox{\wd\mybox}{\ht\mysim}{$\sim$}}}%
+}
+\makeatother
+
+\begin{document}
+\pagestyle{fancy}
+\lhead{Syed Rahman}
+\rhead{High dimensional data}
+
+\begin{center}
+{\large {\bf Homework 1}} \\
+\end{center}
+
+\paragraph{2.} Newton's method to minimize 
+\[
+f(X) = \norm{X}^3, X = \begin{pmatrix}
+X_1\\ 
+X_2\\ 
+\end{pmatrix} \in\mathbb{R}^2.
+\]
+using a constant step size.
+
+Thus, 
+\[
+\nabla f = 3\norm{X}X.
+\]
+and
+\begin{align*}
+\nabla^2 f  &=  3\begin{pmatrix}
+\frac{X_1^2}{\norm{X}}+\norm{X}&\frac{X_1X_2}{\norm{X}}\\ 
+\frac{X_1X_2}{\norm{X}}&\frac{X_2^2}{\norm{X}}+\norm{X}\\ 
+\end{pmatrix}.
+\end{align*}
+As a result, 
+\begin{align*}
+(\nabla^2 f)^{-1}  &=  \frac{1}{3({\frac{X_1X_2}{\norm{X}}}^2 + X_1^2
+                     + X_2^2 + \norm{X}^2) - {\frac{X_1X_2}{\norm{X}}}^2}\begin{pmatrix}
+\frac{X_2^2}{\norm{X}}+\norm{X}&-\frac{X_1X_2}{\norm{X}}\\ 
+-\frac{X_1X_2}{\norm{X}}&\frac{X_1^2}{\norm{X}}+\norm{X}\\ 
+\end{pmatrix}.
+\end{align*}
+which implies,
+\begin{align*}
+  (\nabla^2 f)^{-1} (\nabla f) =& \frac{1}{6 \norm{X}^2}
+\begin{pmatrix}
+\frac{X_2^2}{\norm{X}}+\norm{X}&-\frac{X_1X_2}{\norm{X}}\\ 
+-\frac{X_1X_2}{\norm{X}}&\frac{X_1^2}{\norm{X}}+\norm{X}\\ 
+\end{pmatrix} \times 3\norm{X} \begin{pmatrix}
+X_1\\ 
+X_2\\ 
+\end{pmatrix}
+\\
+=&
+\frac{1}{2 \norm{X}}
+\begin{pmatrix}
+\frac{X_1X_2^2}{\norm{X}}+\norm{X}X_1-\frac{X_1X_2^2}{\norm{X}}\\ 
+-\frac{X_1^2X_2}{\norm{X}}+\frac{X_1^2X_2}{\norm{X}}+\norm{X}X_2\\ 
+\end{pmatrix} 
+\\
+=& \frac{1}{2} \begin{pmatrix}
+X_1\\ 
+X_2\\ 
+\end{pmatrix} = \frac{X}{2}.
+\end{align*}
+
+Thus, Newton's method for this problem implies 
+\begin{align*}
+X^{k+1} =& X^{k} - \alpha   (\nabla^2 f)^{-1} (\nabla f) \\
+=& X^{k}( 1 - \frac{\alpha}{2})  \\
+=& X^{k-1}( 1 - \frac{\alpha}{2})^2  \\
+\vdots \\ 
+=& X^{0}( 1 - \frac{\alpha}{2})^k .
+\end{align*}
+As $k \to \infty,X^{k} \to 0$ for $0<\abs{( 1 - \frac{\alpha}{2})}<1 \iff 0<\alpha<4$.
+\end{document}
+

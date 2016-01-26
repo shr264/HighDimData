@@ -1,0 +1,59 @@
+
+
+
+> On Apr 16, 2015, at 11:21 AM, Syed Rahman <syedhr264@gmail.com> wrote:
+> 
+> Meet Sunday for hw?
+> 
+> Sent from my iPhone
+> 
+>> On Apr 15, 2015, at 7:29 PM, Abrahamsen,Tavis M <tabrahamsen@ufl.edu> wrote:
+>> 
+>> here it is
+>> 
+>> <joint_lasso_final.tex>
+>> 
+>> 
+>> <Fig2Danimages.pdf>
+>> <Fig2Danwhole.pdf>
+>> <Fig3Danaher.pdf>
+>> <graph1danaher.pdf>
+>> <Omega1-f.pdf>
+>> <Omega1hat-f.pdf>
+>> <Omega1hat-g.pdf>
+>> <Omega2-f.pdf>
+>> <Omega2hat-f.pdf>
+>> <Omega2hat-g.pdf>
+>> <Omega3-f.pdf>
+>> <Omega3hat-f.pdf>
+>> <Omega3hat-g.pdf>
+>> <Table1Danaher.pdf>
+>> <Table1Danaher1.pdf>
+>> 
+>>> On Apr 15, 2015, at 7:12 PM, Bai,Ray <raybai07@ufl.edu> wrote:
+>>> 
+>>> Tavis,
+>>> 
+>>> could you please send the beamer tex file so we can add our stuff to it?
+>>> The background stuff at the beginning is essentially the same as our paper, the differences are that our paper provides a third algorithm and other numerical simulation results. I will just put it at the end of yours. 
+>>> 
+>>> Ray
+>>> ________________________________________
+>>> From: Skripnikov,Andrey
+>>> Sent: Wednesday, April 15, 2015 5:37 PM
+>>> To: Syed Rahman; Abrahamsen,Tavis M; Bai,Ray
+>>> Subject: Re: Presentation
+>>> 
+>>> Will do
+>>> 
+>>> ________________________________________
+>>> From: Syed Rahman <syedhr264@gmail.com>
+>>> Sent: Wednesday, April 15, 2015 5:10 PM
+>>> To: Abrahamsen,Tavis M; Bai,Ray; Skripnikov,Andrey
+>>> Subject: Presentation
+>>> 
+>>> George wants one presentation. So we need to combine our powers and maybe meet on Monday.
+>>> 
+>>> Sent from my iPhone
+>> 
+
